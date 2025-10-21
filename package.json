@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/VicRamD/repo1_sprint3_mod3/issues"
   },
-  "homepage": "https://github.com/VicRamD/repo1_sprint3_mod3#readme"
+  "homepage": "https://github.com/VicRamD/repo1_sprint3_mod3#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.19.2"
+  }
 }
