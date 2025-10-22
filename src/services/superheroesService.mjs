@@ -20,3 +20,8 @@ export const crearNuevoSuperheroe = async (datosSuperHeroe) => {
     console.log(datosSuperHeroe);
     return await SuperHeroRepository.crearNuevoSuperHeroe(datosSuperHeroe);
 }
+
+export const actualizarSuperheroe = async (id, datosSuperHeroe) => {
+    console.log(datosSuperHeroe);
+    return await SuperHeroRepository.actualizarSuperHeroe(id, datosSuperHeroe);
+}

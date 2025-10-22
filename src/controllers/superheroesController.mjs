@@ -1,6 +1,6 @@
 import {obtenerSuperheroePorId, obtenerTodosLosSuperheroes, 
     buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30,
-    crearNuevoSuperheroe} from '../services/superheroesService.mjs';
+    crearNuevoSuperheroe, actualizarSuperheroe} from '../services/superheroesService.mjs';
 
 import {renderizarSuperheroe, renderizarListaSuperheroes} from '../views/responseView.mjs';
 
@@ -9,6 +9,7 @@ export const obtenerSuperheroePorIdController = async (req, res) => {
         const {id} = req.params;
         //console.log(id);
         const superheroe = await obtenerSuperheroePorId(id); 
+        console.log(superheroe);
         if(!superheroe){
             return res.status(404).send({mensaje: 'Superhéroe no encontrado'});
         }    
@@ -85,11 +86,6 @@ export const crearNuevoSuperHeroeController = async (req, res) =>{
         const datosSuperHeroe = req.body;
         console.log(datosSuperHeroe);
         const nuevoHeroe = await crearNuevoSuperheroe(datosSuperHeroe);
-        /* if(superheroes.length===0){
-            res.status(404).send({
-                mensaje: 'No se encontraron superhéroes mayores de 30 años'
-            });
-        } */
 
         const superheroeFormateado = renderizarSuperheroe(nuevoHeroe);
         res.status(200).json(superheroeFormateado);
@@ -101,3 +97,30 @@ export const crearNuevoSuperHeroeController = async (req, res) =>{
         });
     }
 }
+
+export const actualizarSuperheroeController = async (req, res) => {
+        try {
+            const {id} = req.params;
+
+            console.log(req.body);
+            const datosSuperHeroe = req.body;
+            console.log(datosSuperHeroe);
+
+            const heroeActualizado = await actualizarSuperheroe(id, datosSuperHeroe);
+            console.log("Actualizar superheroe", heroeActualizado);
+
+            if(!heroeActualizado){
+                return res.status(404).send({mensaje: 'Superhéroe no encontrado'});
+            }  
+
+            
+            const superheroeFormateado = renderizarSuperheroe(heroeActualizado);
+            res.status(200).json(superheroeFormateado);
+
+        } catch (error) {
+            res.status(500).send({
+                mensaje: 'Error al actualizar un superhéroe',
+                error: error.message
+            });
+        }
+    }

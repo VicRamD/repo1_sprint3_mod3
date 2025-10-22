@@ -1,6 +1,6 @@
 export function renderizarSuperheroe(superheroe){
-    console.log("En renderizarSuperHeroe");
-    console.log("Poderes", superheroe.poderes);
+    //console.log("En renderizarSuperHeroe");
+    //console.log("Poderes", superheroe.poderes);
 
     return {
         Nombre: superheroe.nombreSuperHeroe,

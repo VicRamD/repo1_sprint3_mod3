@@ -54,6 +54,32 @@ class SuperHeroRepository extends IRepository {
         )
         return superHeroe;
     }
+
+    async actualizarSuperHeroe(id, datosSuperHeroe){
+        console.log(datosSuperHeroe);
+
+        //se guarda el resultado para saber si se actualizó algún super héroe
+        const resultado = await SuperHero.updateOne({_id: id}, {
+            $set: {
+                nombreSuperHeroe: datosSuperHeroe.nombreSuperHeroe,
+                nombreReal: datosSuperHeroe.nombreReal,
+                edad: datosSuperHeroe.edad,
+                planetaOrigen: datosSuperHeroe.planetaOrigen,
+                debilidad: datosSuperHeroe.debilidad,
+                poderes: datosSuperHeroe.poderes,
+                aliados: datosSuperHeroe.aliados,
+                enemigos: datosSuperHeroe.enemigos,
+                creador: datosSuperHeroe.creador,
+            }
+        });
+
+        if(resultado.matchedCount === 0) {
+            console.log("No se encontró un superhéroe con el id enviado");
+        } 
+        //recupera el heroe actualizado
+        return await SuperHero.findById(id);
+        
+    }
 }
 
 export default new SuperHeroRepository();
