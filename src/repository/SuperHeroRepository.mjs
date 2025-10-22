@@ -35,6 +35,25 @@ class SuperHeroRepository extends IRepository {
         //ejemplo en mongoDB compass {edad:{$gt: 25}, planetaOrigen: "Tierra"}
 
     }
+
+    async crearNuevoSuperHeroe(datosSuperHeroe){
+        console.log(datosSuperHeroe);
+
+        const superHeroe = await SuperHero.create(
+            {
+                nombreSuperHeroe: datosSuperHeroe.nombreSuperHeroe,
+                nombreReal: datosSuperHeroe.nombreReal,
+                edad: datosSuperHeroe.edad,
+                planetaOrigen: datosSuperHeroe.planetaOrigen,
+                debilidad: datosSuperHeroe.debilidad,
+                poderes: datosSuperHeroe.poderes,
+                aliados: datosSuperHeroe.aliados,
+                enemigos: datosSuperHeroe.enemigos,
+                creador: datosSuperHeroe.creador,
+            }
+        )
+        return superHeroe;
+    }
 }
 
 export default new SuperHeroRepository();

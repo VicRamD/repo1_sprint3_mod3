@@ -15,3 +15,8 @@ export const buscarSuperheroesPorAtributo = async (atributo, valor) => {
 export const obtenerSuperheroesMayoresDe30 = async () => {
     return await SuperHeroRepository.obtenerMayoresDe30();
 }
+
+export const crearNuevoSuperheroe = async (datosSuperHeroe) => {
+    console.log(datosSuperHeroe);
+    return await SuperHeroRepository.crearNuevoSuperHeroe(datosSuperHeroe);
+}

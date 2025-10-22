@@ -11,6 +11,10 @@ class IRepository {
     obtenerMayoresDe30() {
         throw new Error("Método 'obtenerMayoresDe30()' no implementado");
     }
+
+    crearNuevoSuperHeroe(datosSuperHeroe){
+        throw new Error("Método 'crearNuevoSuperHeroe()' no implementado");
+    }
 }
 
 export default IRepository;
