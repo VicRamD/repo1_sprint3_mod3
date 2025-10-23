@@ -80,6 +80,22 @@ class SuperHeroRepository extends IRepository {
         return await SuperHero.findById(id);
         
     }
+
+    async eliminarSuperHeroePorID(id){
+        return await SuperHero.findByIdAndDelete(id);
+    }
+
+    async eliminarSuperHeroePorNombreDeHeroe(nombreSuperHeroe) {
+        const superHeroeAEliminar = await SuperHero.findOne({
+            nombreSuperHeroe: nombreSuperHeroe,
+        });
+ 
+        console.log("Héroe a eliminar", superHeroeAEliminar);
+        //de acuerdo a documentación deleteOne elimina el primer registro que coincida con el criterio
+        await SuperHero.deleteOne({nombreSuperHeroe: nombreSuperHeroe});
+
+        return superHeroeAEliminar;
+    }
 }
 
 export default new SuperHeroRepository();

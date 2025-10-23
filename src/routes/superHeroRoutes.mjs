@@ -2,7 +2,8 @@ import express from 'express';
 
 import {obtenerSuperheroePorIdController, obtenerTodosLosSuperheroesController,
     buscarSuperheroesPorAtributoController, obtenerSuperheroesMayoresDe30Controller,
-    crearNuevoSuperHeroeController, actualizarSuperheroeController
+    crearNuevoSuperHeroeController, actualizarSuperheroeController, eliminarSuperHeroePorIDController,
+    eliminarSuperHeroePorNombreDeHeroeController
 } from '../controllers/superheroesController.mjs';
 
 const router = express.Router();
@@ -17,9 +18,13 @@ router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoContro
 //si se recibe una petición post para la ruta heroes se ejecuta la siguiente línea
 router.post('/heroes', crearNuevoSuperHeroeController);
 
+//Eliminar por nombre, manda por el body el nombreSuperHeroe
+router.delete('/heroes', eliminarSuperHeroePorNombreDeHeroeController);
+
 //heroes/:id se dejó para el final para evitar que al escribir /mayores-30 lo interprete como un id
 router.get('/heroes/:id', obtenerSuperheroePorIdController);
 router.put('/heroes/:id', actualizarSuperheroeController);
+router.delete('/heroes/:id', eliminarSuperHeroePorIDController);
 //http://localhost:3000/api/heroes/68f28aa5653a5ddc12de3b02
 
 

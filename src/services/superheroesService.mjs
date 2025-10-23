@@ -25,3 +25,11 @@ export const actualizarSuperheroe = async (id, datosSuperHeroe) => {
     console.log(datosSuperHeroe);
     return await SuperHeroRepository.actualizarSuperHeroe(id, datosSuperHeroe);
 }
+
+export const eliminarSuperHeroePorID = async (id) => {
+    return await SuperHeroRepository.eliminarSuperHeroePorID(id);
+}
+
+export const eliminarSuperHeroePorNombreDeHeroe = async (nombreSuperHeroe) => {
+    return await SuperHeroRepository.eliminarSuperHeroePorNombreDeHeroe(nombreSuperHeroe);
+}
